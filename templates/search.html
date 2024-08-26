@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Visualization</title>
+</head>
+<body>
+    <h1>Player Data Visualization</h1>
+    <form id="stat-collection">
+        {% csrf_token %}
+        <label>
+            Player name: 
+            <input id="player" />
+        </label>
+        <label for="stat">Stat Category:</label>
+        
+        <select name="stat" id="stat">
+            <option value="PTS">Points</option>
+            <option value="FG3M">Threes made</option>
+            <option value="FG_PCT">Field goal %</option>
+            <option value="FG3_PCT">Three point %</option>
+            <option value="FT_PCT">Free throw %</option>
+            <option value="REB">Rebounds</option>
+            <option value="AST">Assists</option>
+            <option value="STL">Steals</option>
+            <option value="BLK">Blocks</option>
+            <option value="TOV">Turnovers</option>
+        </select> 
+    
+        <label for="range">Past X games: </label>
+        
+        <select id="range" name="range">
+            <option value="5">5 games</option>
+            <option value="10">10 games</option>
+            <option value="15">15 games</option>
+            <option value="30">30 games</option>
+            <option value="0">Season</option>
+        </select>
+    
+        <label for="season">Season: </label>
+        
+        <select id="season" name="season">
+            <option value="curr">Current season</option>
+        </select>
+    
+        <button type="button" id="submit-button">Search</button>
+        
+        <script>
+            document.getElementById('submit-button').addEventListener('click', function () {
+                let player_name = document.getElementById('player').value
+                let stat = document.getElementById('stat').value
+                let range = document.getElementById('range').value
+                
+                
+                let url = '/visualize/?player=' + encodeURIComponent(player_name) + 
+                    '&stat=' + encodeURIComponent(stat) +
+                    '&range=' + encodeURIComponent(range)
+                
+                window.location.href = url;
+            })
+        </script>
+    </form>
+</body>
+</html>
