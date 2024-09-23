@@ -69,9 +69,9 @@ def nfl_player_visualize(request):
 
     for i in range(len(player_stat['week'].tolist())):
         if player_stat['game_location'][i] == '@':
-            game = f'Week {player_stat['week'][i]} @ {player_stat['opp'][i]}'
+            game = f"Week {player_stat['week'][i]} @ {player_stat['opp'][i]}"
         else:
-            game = f'Week {player_stat['week'][i]} vs {player_stat['opp'][i]}'
+            game = f"Week {player_stat['week'][i]} vs {player_stat['opp'][i]}"
 
         matchups.append(game)
 
