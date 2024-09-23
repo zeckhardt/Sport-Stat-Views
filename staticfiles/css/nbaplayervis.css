@@ -1,0 +1,12 @@
+* {
+    font-family: Futura, serif;
+}
+
+#titles {
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

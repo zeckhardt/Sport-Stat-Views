@@ -1,0 +1,66 @@
+* {
+    font-family: Futura, serif;
+}
+
+body, html {
+    margin: 0;
+    display: grid;
+    justify-items: center;
+    color: whitesmoke;
+}
+
+h1 {
+    font-size: 35px;
+    color: black;
+}
+
+.search-box {
+    text-align: center;
+    background-color: #013063;
+    border: black solid 4px;
+    border-radius: 10px;
+    width: 350px;
+    height: 400px;
+    align-content: center;
+}
+
+.labels {
+    font-size: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#player {
+    height: 25px;
+    width: 220px;
+    border-radius: 10px;
+    border-color: red;
+    border-width: thick;
+    margin: 5px;
+}
+
+.dropdown {
+    border-radius: 15px;
+    border: solid whitesmoke;
+    height: 35px;
+    width: 150px;
+    text-align: center;
+    background-color: black;
+    color: whitesmoke;
+    margin: 5px;
+}
+
+#submit-button {
+    height: 35px;
+    width: 65px;
+    background-color: red;
+    color: black;
+    border: black solid 3px;
+    border-radius: 10px;
+    margin: 10px;
+}
