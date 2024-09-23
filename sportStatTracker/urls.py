@@ -19,6 +19,9 @@ from django.urls import path
 from sportStatTracker import views
 
 urlpatterns = [
-    path('',views.input_data, name='home'),
-    path('visualize/', views.visualize_data, name='visualize_data'),
+    path('', views.home, name='home'),
+    path('nfl/player', views.input_nfl_player, name='nfl_player'),
+    path('nfl/visualize/', views.nfl_player_visualize, name='nfl_player_visualize'),
+    path('nba/player', views.input_nba_player, name='nba_player'),
+    path('nba/visualize/', views.nba_player_visualize, name='nba_player_visualize'),
 ]

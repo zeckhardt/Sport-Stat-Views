@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Visualization</title>
+    <link rel="stylesheet" href="/static/css/search.css">
+</head>
+<body>
+    <h1>NFL Player Search</h1>
+    <div class="search-box">
+        <form id="stat-collection">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="player" class="labels">Player Name:</label>
+                <input id="player" />
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <select class="dropdown" name="position" id="position">
+                    <option></option>
+                    <option value="QB">Quarterback</option>
+                    <option value="WR">Wide Receiver</option>
+                    <option value="RB">Running Back</option>
+                    <option value="TE">Tight End</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="labels" for="stat">Stat Category:</label>
+                    
+                <select class="dropdown" name="stat" id="stat">
+                </select> 
+                    
+                <script>
+                    document.getElementById('position').addEventListener('change', (event) => {
+                       let selectedVal = event.target.value;
+                       let statsSelect = document.getElementById('stat');
+                        
+                        statsSelect.innerHTML = '';
+                       
+                       const statOptions = {
+                         'QB': [
+                             {text: 'Passing Yards', value: 'pass_yds'},
+                             {text: 'Passing Touchdowns', value: 'pass_td'},
+                             {text: 'Rushing Yards', value: 'rush_yds'},
+                             {text: 'Rushing Touchdowns', value: 'rush_td'},
+                             {text: 'Interceptions', value: 'int'},
+                             {text: 'Sacks', value: 'sacked'},
+                         ], 
+                           'WR': [
+                               {text: 'Receiving Yards', value: 'rec_yds'},
+                               {text: 'Receiving Touchdowns', value: 'rec_td'},
+                               {text: 'Receptions', value: 'rec'},
+                               {text: 'Targets', value: 'tgt'},
+                           ],
+                           'RB': [
+                               {text: 'Receiving Yards', value: 'rec_yds'},
+                               {text: 'Receiving Touchdowns', value: 'rec_td'},
+                               {text: 'Receptions', value: 'rec'},
+                               {text: 'Targets', value: 'tgt'},
+                               {text: 'Rushing Yards', value: 'rush_yds'},
+                               {text: 'Rushing Touchdowns', value: 'rush_td'},
+                               {text: 'Rush Attempts', value: 'rush_att'},
+                           ],
+                           'TE': [
+                               {text: 'Receiving Yards', value: 'rec_yds'},
+                               {text: 'Receiving Touchdowns', value: 'rec_td'},
+                               {text: 'Receptions', value: 'rec'},
+                               {text: 'Targets', value: 'tgt'},
+                           ]
+                       };
+                       
+                       
+                       if (selectedVal) {
+                           statOptions[selectedVal].forEach((item) => {
+                               const option = document.createElement('option');
+                               option.text = item.text;
+                               option.value = item.value;
+                               statsSelect.add(option);
+                           });
+                       }
+                    });
+                </script>
+            </div>
+            <div class="form-group">
+                <label class="labels" for="season">Season: </label>
+                
+                <select class="dropdown"  id="season" name="season">
+                    <option value="curr">Current season</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="button" id="submit-button">Search</button>
+                
+                <script>
+                    document.getElementById('submit-button').addEventListener('click', function () {
+                        let player_name = document.getElementById('player').value
+                        let position = document.getElementById('position').value
+                        let stat = document.getElementById('stat').value
+                        
+                        window.location.href = 'visualize/?player=' + encodeURIComponent(player_name) + 
+                            '&position=' +encodeURIComponent(position) +
+                            '&stat=' + encodeURIComponent(stat)
+                    })
+                </script>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

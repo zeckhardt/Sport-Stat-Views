@@ -5,47 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Visualization</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="/static/css/nbaplayervis.css">
 </head>
 <body>
-    <h1>Data Visualization</h1>
-    <h2 id="chart-title">filler</h2>
+    <div id="titles">
+        <h1 id="chart-title">filler</h1>
+    </div>
     <script>
         const chartData = JSON.parse('{{ chart_data_json|safe }}');
         const title = document.getElementById('chart-title');
-        
-        if (chartData['labels'][4] === '0')
-            title.innerText = `${chartData['labels'][2]}\'s ${chartData['labels'][1]} over the ${chartData['labels'][3]} season`;
+
+        if (chartData['labels'][4] === '0' || !chartData['labels'][4])
+            title.innerText = `${chartData['labels'][2]}\'s ${chartData['labels'][1].toLowerCase()} over the ${chartData['labels'][3]} season`;
         else
-            title.innerText = `${chartData['labels'][2]}\'s ${chartData['labels'][1]} over the past ${chartData['labels'][4]} for the ${chartData['labels'][3]} season`;
+            title.innerText = `${chartData['labels'][2]}\'s ${chartData['labels'][1].toLowerCase()} over the past ${chartData['labels'][4]} games for the ${chartData['labels'][3]} season`;
     </script>
-    
-    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <canvas id="myChart" width="400" height="175"></canvas>
     <script>
         //const chartData = JSON.parse('{{ chart_data_json|safe }}');
         const ctx = document.getElementById('myChart').getContext('2d');
-        
+
         const dataPoints = chartData['stat'];
         const sum = dataPoints.reduce((acc, value) => acc + value, 0);
         const average = sum / dataPoints.length;
-        
+
         const avgLine = Array(dataPoints.length).fill(average);
-        
+
+        const winLoss = chartData['WL'].map(game => game === 'W' ? 'green' : 'red')
+
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: chartData['dates'],
+                labels: chartData['matchups'],
                 datasets: [
                     {
                         label: chartData['labels'][1],
-                        backgroundColor: "rgba(0, 0, 255, 0.5)",
-                        borderColor: "rgba(0, 0, 255, 1.0)",
+                        backgroundColor: winLoss,
+                        borderColor: 'black',
+                        pointRadius: 4,
                         data: chartData['stat'],
                         fill: false,
                     },
                     {
                         label: `Average [${average.toFixed(2)}]`,
-                        backgroundColor: "rgba(255, 0, 0, 0.5)",
-                        borderColor: "rgba(255, 0, 0, 1.0)",
+                        backgroundColor: "blue",
+                        borderColor: "blue",
                         data: avgLine,
                         fill: false,
                         borderDash: [5, 5],
@@ -63,7 +68,7 @@
                 }
             }
         });
-        
+
     </script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sport Visualization</title>
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header">
+            <h1>Select a Sport</h1>
+        </div>
+        <div class="left">
+            <div class="img">
+                <img id="nba-logo" src="{% static 'images/nba-logo.png' %}" alt="NBA">
+            </div>
+            <div class="img-button">
+                <button class="select-button" onclick="window.location.href='/nba/player'">NBA Players</button>
+                <button class="select-button" onclick="window.location.href='/nba/team'">NBA Teams</button>
+            </div>
+        </div>
+        <div class="right">
+            <div class="img">
+                <img id="nfl-logo" src="{% static 'images/nfl-logo.png' %}" alt="NFL">
+            </div>
+            <div class="img-button">
+                <button class="select-button" onclick="window.location.href='/nfl/player'">NFL Players</button>
+                <button class="select-button" onclick="window.location.href='/nfl/team'">NFL Teams</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
