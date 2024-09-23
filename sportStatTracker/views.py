@@ -32,7 +32,7 @@ nfl_player_stats = {
 
 
 def nba_player_visualize(request):
-    player_name = request.GET.get('player').title()
+    player_name = request.GET.get('player')
     stat = request.GET.get("stat")
     past = request.GET.get('range')
     season = '2023-24'
@@ -60,7 +60,7 @@ def nba_player_visualize(request):
 
 
 def nfl_player_visualize(request):
-    player_name = request.GET.get('player').title()
+    player_name = request.GET.get('player')
     position = request.GET.get('position')
     stat = request.GET.get("stat")
 
