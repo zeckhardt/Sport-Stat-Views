@@ -27,17 +27,17 @@
             </div>
             <div class="form-group">
                 <label class="labels" for="stat">Stat Category:</label>
-                    
+
                 <select class="dropdown" name="stat" id="stat">
-                </select> 
-                    
+                </select>
+
                 <script>
                     document.getElementById('position').addEventListener('change', (event) => {
                        let selectedVal = event.target.value;
                        let statsSelect = document.getElementById('stat');
-                        
+
                         statsSelect.innerHTML = '';
-                       
+
                        const statOptions = {
                          'QB': [
                              {text: 'Passing Yards', value: 'pass_yds'},
@@ -46,7 +46,7 @@
                              {text: 'Rushing Touchdowns', value: 'rush_td'},
                              {text: 'Interceptions', value: 'int'},
                              {text: 'Sacks', value: 'sacked'},
-                         ], 
+                         ],
                            'WR': [
                                {text: 'Receiving Yards', value: 'rec_yds'},
                                {text: 'Receiving Touchdowns', value: 'rec_td'},
@@ -69,8 +69,8 @@
                                {text: 'Targets', value: 'tgt'},
                            ]
                        };
-                       
-                       
+
+
                        if (selectedVal) {
                            statOptions[selectedVal].forEach((item) => {
                                const option = document.createElement('option');
@@ -84,25 +84,14 @@
             </div>
             <div class="form-group">
                 <label class="labels" for="season">Season: </label>
-                
+
                 <select class="dropdown"  id="season" name="season">
                     <option value="curr">Current season</option>
                 </select>
             </div>
             <div class="form-group">
                 <button type="button" id="submit-button">Search</button>
-                
-                <script>
-                    document.getElementById('submit-button').addEventListener('click', function () {
-                        let player_name = document.getElementById('player').value
-                        let position = document.getElementById('position').value
-                        let stat = document.getElementById('stat').value
-                        
-                        window.location.href = 'visualize/?player=' + encodeURIComponent(player_name) + 
-                            '&position=' +encodeURIComponent(position) +
-                            '&stat=' + encodeURIComponent(stat)
-                    })
-                </script>
+                <script src="/js/nflsearch.js"></script>
             </div>
         </form>
     </div>

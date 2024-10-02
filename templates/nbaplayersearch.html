@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label class="labels" for="stat">Stat Category:</label>
-                
+
                 <select class="dropdown" name="stat" id="stat">
                     <option value="PTS">Points</option>
                     <option value="FG3M">Threes made</option>
@@ -29,11 +29,11 @@
                     <option value="STL">Steals</option>
                     <option value="BLK">Blocks</option>
                     <option value="TOV">Turnovers</option>
-                </select> 
+                </select>
             </div>
             <div class="form-group">
                 <label class="labels" for="range">Past X games: </label>
-            
+
                 <select class="dropdown"  id="range" name="range">
                     <option value="5">5 games</option>
                     <option value="10">10 games</option>
@@ -44,25 +44,14 @@
             </div>
             <div class="form-group">
                 <label class="labels" for="season">Season: </label>
-                
+
                 <select class="dropdown"  id="season" name="season">
                     <option value="curr">Current season</option>
                 </select>
             </div>
             <div class="form-group">
                 <button type="button" id="submit-button">Search</button>
-                
-                <script>
-                    document.getElementById('submit-button').addEventListener('click', function () {
-                        let player_name = document.getElementById('player').value
-                        let stat = document.getElementById('stat').value
-                        let range = document.getElementById('range').value
-                        
-                        window.location.href = 'visualize/?player=' + encodeURIComponent(player_name) + 
-                            '&stat=' + encodeURIComponent(stat) +
-                            '&range=' + encodeURIComponent(range);
-                    })
-                </script>
+                <script src="/static/js/nbasearch.js"></script>
             </div>
         </form>
     </div>

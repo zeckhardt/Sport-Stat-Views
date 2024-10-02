@@ -56,7 +56,7 @@ def nba_player_visualize(request):
     context = {
         'chart_data_json': chart_data_json
     }
-    return render(request, 'nbaplayervisualization.html', context)
+    return render(request, 'playervisualization.html', context)
 
 
 def nfl_player_visualize(request):
@@ -88,7 +88,7 @@ def nfl_player_visualize(request):
         'chart_data_json': chart_data_json
     }
 
-    return render(request, 'nbaplayervisualization.html', context)
+    return render(request, 'playervisualization.html', context)
 
 
 def input_nba_player(request):
@@ -101,4 +101,3 @@ def input_nfl_player(request):
 
 def home(request):
     return render(request, 'landing.html')
-
