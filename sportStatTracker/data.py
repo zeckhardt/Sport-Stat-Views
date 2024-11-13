@@ -22,7 +22,7 @@ def get_player_id(player_name):
     return None
 
 
-def get_player_game_log(player_id, season='2023-24'):
+def get_player_game_log(player_id, season='2024-25'):
     """
     Retrieve the player's game log data for a specified season.
 
@@ -37,7 +37,7 @@ def get_player_game_log(player_id, season='2023-24'):
     return game_log.get_data_frames()[0]
 
 
-def get_player_stat_data(player_name, stat, range=0, season='2023-24'):
+def get_player_stat_data(player_name, stat, range=0, season='2024-25'):
     """
     Retrieve specific player statistics from their game log.
 

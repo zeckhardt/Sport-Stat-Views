@@ -20,8 +20,6 @@ from sportStatTracker import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('nfl/player', views.input_nfl_player, name='nfl_player'),
-    path('nfl/visualize/', views.nfl_player_visualize, name='nfl_player_visualize'),
-    path('nba/player', views.input_nba_player, name='nba_player'),
-    path('nba/visualize/', views.nba_player_visualize, name='nba_player_visualize'),
+    path('<str:sport_type>/player', views.input_player, name='player_input'),
+    path('<str:sport_type>/visualize/', views.player_visualize, name='player_visualize'),
 ]

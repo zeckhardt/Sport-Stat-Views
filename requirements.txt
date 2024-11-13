@@ -11,7 +11,7 @@ haversine==2.8.1
 idna==3.7
 kiwisolver==1.4.5
 matplotlib==3.9.2
-nba_api==1.5.0
+nba_api==1.6.1
 numpy==1.26.4
 packaging==24.1
 pandas==2.2.2
